@@ -2,31 +2,31 @@ import React, {useRef, useState} from "react";
 import {Avatar, Collapse, ListItemButton, ListItemIcon, ListItemText,LinearProgress} from "@mui/material";
 import FolderIcon from "@mui/icons-material/Folder";
 import {ExpandLess, ExpandMore} from "@mui/icons-material";
-import {File, fileType} from '../../types'
-import {FileComponent} from '../file'
+import {File, fileType} from '../../types';
+import {FileComponent} from '../file';
 import {treeActions} from "../../treeActions";
 import {blue,} from "@mui/material/colors";
-import './folder.css'
+import './folder.css';
 
 type Props = {
-    folder: File
-    addChildren: (files:File[],folder: File) => void
+    folder: File;
+    addChildren: (files:File[],folder: File) => void;
 }
 
-const TIME_UNTIL_FETCHING_DATA = 1000
+const TIME_UNTIL_FETCHING_DATA = 1000;
 
 export const Folder = (props: Props) => {
-    const [isOpen ,setIsOpen] = useState(false)
-    const [isLoading,setIsLoading] = useState(false)
+    const [isOpen ,setIsOpen] = useState(false);
+    const [isLoading,setIsLoading] = useState(false);
 
     const onFolderPress = async () => {
         if (props.folder?.children === undefined){
-            setIsLoading(true)
+            setIsLoading(true);
             setTimeout(async ()=>{
-                const randomChildren = await treeActions.getRandomChildren()
-                props.addChildren(randomChildren,props.folder)
-                setIsLoading(false)
-            }, TIME_UNTIL_FETCHING_DATA)
+                const randomChildren = await treeActions.getRandomChildren();
+                props.addChildren(randomChildren,props.folder);
+                setIsLoading(false);
+            }, TIME_UNTIL_FETCHING_DATA);
         }
         setIsOpen(!isOpen)
     }

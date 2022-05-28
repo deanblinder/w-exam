@@ -6,8 +6,8 @@ const getRndInteger = (min:number, max:number) => {
 }
 
 const getRandomChildren = async () => {
-    const chance = new Chance()
-    const arrLength = getRndInteger(0,6)
+    const chance = new Chance();
+    const arrLength = getRndInteger(0,6);
     const filesArr: File[] = [];
 
     for (let i = 0 ; i < arrLength ; i++){
@@ -17,9 +17,9 @@ const getRandomChildren = async () => {
             dateCreated:chance.date({string: true}),
             type: chance.pickone([fileType.DIR,fileType.DOC,fileType.PNG])
         }
-        filesArr.push(randomFile)
+        filesArr.push(randomFile);
     }
-    return filesArr
+    return filesArr;
 }
 
 export const treeActions = {

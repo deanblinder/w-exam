@@ -6,7 +6,7 @@ import {File, fileType} from '../../types'
 import { green, pink } from '@mui/material/colors';
 
 type Props = {
-    file:File
+    file:File;
 }
 
 export const FileComponent = (props:Props) => {

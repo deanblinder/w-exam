@@ -2,18 +2,18 @@ import React, {useState} from "react";
 import {File, fileType} from "./types";
 import {Folder} from "./components/folder";
 import {FileComponent} from "./components/file";
-import './treeComponent.css'
+import './treeComponent.css';
 
 type Props = {
-    files: File[] | undefined
+    files: File[] | undefined;
 }
 
 export const Tree = (props: Props) => {
     const [tree, setTree] = useState<File[] | undefined>(props.files);
 
     const addChildren = (filesToAdd: File[], folder: File) => {
-        folder.children = filesToAdd
-        setTree(tree ? [...tree] : undefined)
+        folder.children = filesToAdd;
+        setTree(tree ? [...tree] : undefined);
     }
 
     const renderFiles = () => {

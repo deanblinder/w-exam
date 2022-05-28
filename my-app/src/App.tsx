@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import './App.css';
 import {Tree} from "./tree";
-import {Backdrop, Button, Modal, Fade, Box, CircularProgress, Divider} from '@mui/material'
+import {Backdrop, Button, Modal, Fade, Box, CircularProgress, Divider} from '@mui/material';
 import {treeActions} from "./tree/treeActions";
-import {File} from './tree/types'
+import {File} from './tree/types';
 
 const TIME_UNTIL_FETCHING_DATA = 1000
 
@@ -21,22 +21,22 @@ const boxStyle = {
 }
 
 function App() {
-    const [treeFiles,setFiles] = useState<File[] | undefined>(undefined)
-    const [isLoading,setIsLoading] = useState(false)
+    const [treeFiles,setFiles] = useState<File[] | undefined>(undefined);
+    const [isLoading,setIsLoading] = useState(false);
     const [open, setOpen] = React.useState(false);
     const handleClose = () => setOpen(false);
 
 
     const fetchData = async () => {
         if (treeFiles === undefined){
-            setIsLoading(true)
+            setIsLoading(true);
             setTimeout(async () => {
-                const randomFiles: File[] = await treeActions.getRandomChildren()
-                setFiles(randomFiles)
-                setIsLoading(false)
-            },TIME_UNTIL_FETCHING_DATA)
+                const randomFiles: File[] = await treeActions.getRandomChildren();
+                setFiles(randomFiles);
+                setIsLoading(false);
+            },TIME_UNTIL_FETCHING_DATA);
         }
-        setOpen(true)
+        setOpen(true);
 
     }
     return (
